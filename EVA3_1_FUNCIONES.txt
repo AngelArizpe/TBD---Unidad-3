@@ -1,0 +1,75 @@
+MySQL Shell 8.0.22
+
+Copyright (c) 2016, 2020, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): No
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 29
+Server version: 8.0.22 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| empresa            |
+| empresa_tbd        |
+| empresay           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tbd_e1             |
+| tbd_e2             |
+| world              |
++--------------------+
+11 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  SQL > use empresa_tbd;
+Default schema set to `empresa_tbd`.
+Fetching table and column names from `empresa_tbd` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > select count(*) from countries;
++----------+
+| count(*) |
++----------+
+|       27 |
++----------+
+1 row in set (0.0073 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > select regresa_valor();
++-----------------+
+| regresa_valor() |
++-----------------+
+|               1 |
++-----------------+
+1 row in set (0.0041 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > select mostrar_mensaje(quiero tacos);
+ERROR: 1584 (42000): Incorrect parameters in the call to stored function `mostrar_mensaje`
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > select mostrar_mensaje("quiero tacos");
++---------------------------------+
+| mostrar_mensaje("quiero tacos") |
++---------------------------------+
+| Tu mensaje: quiero tacos        |
++---------------------------------+
+1 row in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > select sumar_numeros(5, 10);
++----------------------+
+| sumar_numeros(5, 10) |
++----------------------+
+|                   15 |
++----------------------+
+1 row in set (0.0028 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > select sumar_numeros(20, 10);
++-----------------------+
+| sumar_numeros(20, 10) |
++-----------------------+
+|                    30 |
++-----------------------+
+1 row in set (0.0036 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL >
