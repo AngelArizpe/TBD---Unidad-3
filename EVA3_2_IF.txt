@@ -1,0 +1,140 @@
+EVA3_2_IF
+
+MySQL Shell 8.0.22
+
+Copyright (c) 2016, 2020, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): No
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.22 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > create database tbd_e3;
+Query OK, 1 row affected (0.0103 sec)
+ MySQL  localhost:3306 ssl  SQL > select comparar_numeros(10, 8);
+ERROR: 1046 (3D000): No database selected
+ MySQL  localhost:3306 ssl  SQL > use tbd_e3;
+Default schema set to `tbd_e3`.
+Fetching table and column names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10, 8);
++-------------------------+
+| comparar_numeros(10, 8) |
++-------------------------+
+| Mayor                   |
++-------------------------+
+1 row in set (0.0058 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10, 18);
+ERROR: 1054 (42S22): Unknown column 'num' in 'field list'
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(8, 10);
+ERROR: 1054 (42S22): Unknown column 'num' in 'field list'
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10, 10);
+ERROR: 1054 (42S22): Unknown column 'num' in 'field list'
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10, 8);
++-------------------------+
+| comparar_numeros(10, 8) |
++-------------------------+
+| Mayor                   |
++-------------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10, 8);
++-------------------------+
+| comparar_numeros(10, 8) |
++-------------------------+
+| Mayor                   |
++-------------------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10,10);
+ERROR: 1054 (42S22): Unknown column 'num' in 'field list'
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10,10);
++-------------------------+
+| comparar_numeros(10,10) |
++-------------------------+
+| Igual                   |
++-------------------------+
+1 row in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10,19);
++-------------------------+
+| comparar_numeros(10,19) |
++-------------------------+
+| Menor                   |
++-------------------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select mod(5,3);
++----------+
+| mod(5,3) |
++----------+
+|        2 |
++----------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select es_par(5);
++-----------+
+| es_par(5) |
++-----------+
+| Es impar  |
++-----------+
+1 row in set (0.0025 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select es_par(8);
++-----------+
+| es_par(8) |
++-----------+
+| Es par    |
++-----------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select dia_semana(7);
++---------------+
+| dia_semana(7) |
++---------------+
+| Sábado        |
++---------------+
+1 row in set (0.0026 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select dia_semana(0);
++---------------+
+| dia_semana(0) |
++---------------+
+| No válido     |
++---------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select conversion_temp(3, 10);
++------------------------+
+| conversion_temp(3, 10) |
++------------------------+
+|                    283 |
++------------------------+
+1 row in set (0.0027 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select conversion_temp(1, 10);
++------------------------+
+| conversion_temp(1, 10) |
++------------------------+
+|                     50 |
++------------------------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select conversion_temp(1, 10);
++------------------------+
+| conversion_temp(1, 10) |
++------------------------+
+| 50.000000000           |
++------------------------+
+1 row in set (0.0024 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select conversion_temp(1, 20);
++------------------------+
+| conversion_temp(1, 20) |
++------------------------+
+| 68.000000000           |
++------------------------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select conversion_temp(4, 20);
++------------------------+
+| conversion_temp(4, 20) |
++------------------------+
+| Número inválido        |
++------------------------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL >
