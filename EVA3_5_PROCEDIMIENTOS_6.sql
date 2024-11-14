@@ -1,0 +1,14 @@
+DELIMITER $$
+
+CREATE FUNCTION ultimo_id()
+RETURNS INT DETERMINISTIC
+READS SQL DATA
+
+BEGIN
+	DECLARE maxid INT;
+    SELECT max(id) INTO maxid FROM productos;
+    RETURN maxid;
+END $$
+
+
+DELIMITER ;

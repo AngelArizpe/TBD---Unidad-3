@@ -1,0 +1,90 @@
+EVA3_6_CURSORES
+
+MySQL Shell 8.0.22
+
+Copyright (c) 2016, 2020, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): No
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 56
+Server version: 8.0.22 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_e3
+Default schema set to `tbd_e3`.
+Fetching table and column names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create table prueba(id int key not null);
+Query OK, 0 rows affected (0.0723 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc prueba;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+1 row in set (0.0108 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_prueba(1);
+ERROR: 1305 (42000): PROCEDURE tbd_e3.insertar_prueba does not exist
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_prueba(1);
+ERROR: 1305 (42000): PROCEDURE tbd_e3.insertar_prueba does not exist
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_preuba(1);
++-------------------------------+
+| mensaje                       |
++-------------------------------+
+| Clave correctamente insertada |
++-------------------------------+
+1 row in set (0.0097 sec)
+
+Query OK, 0 rows affected (0.0097 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_preuba(1);
++------------------------+
+| mensaje                |
++------------------------+
+| Error: clave duplicada |
++------------------------+
+1 row in set (0.0022 sec)
+
+Query OK, 0 rows affected (0.0022 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > use empresa_tbd;
+Default schema set to `empresa_tbd`.
+Fetching table and column names from `empresa_tbd` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > desc countries;
++--------------+---------------+------+-----+---------+-------+
+| Field        | Type          | Null | Key | Default | Extra |
++--------------+---------------+------+-----+---------+-------+
+| COUNTRY_ID   | varchar(2)    | NO   | PRI | NULL    |       |
+| COUNTRY_NAME | varchar(40)   | YES  |     | NULL    |       |
+| REGION_ID    | decimal(10,0) | YES  | MUL | NULL    |       |
++--------------+---------------+------+-----+---------+-------+
+3 rows in set (0.0023 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > set @valor = 0;
+Query OK, 0 rows affected (0.0006 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > call contar_paises(@valor);
+ERROR: 1328 (HY000): Incorrect number of FETCH variables
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > select @valor;
++--------+
+| @valor |
++--------+
+|      0 |
++--------+
+1 row in set (0.0015 sec)
+
+Query OK, 0 rows affected (0.0010 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > set @valor = 0;
+Query OK, 0 rows affected (0.0007 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > call contar_paises(@valor);
+Query OK, 0 rows affected (0.0032 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL > select @valor;
++--------+
+| @valor |
++--------+
+|     28 |
++--------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  empresa_tbd  SQL >
