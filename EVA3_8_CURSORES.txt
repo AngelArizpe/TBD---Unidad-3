@@ -1,0 +1,75 @@
+EVA3_8... 
+
+MySQL  localhost:3306 ssl  empresa_tbd  SQL > use tbd_e3;
+Default schema set to `tbd_e3`.
+Fetching table and column names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create tabble prosonas(id int key auto_increment, nombre varchar(50) not null, apellido_pat varchar(50) not null, apellido_mat varchar(50), fecha_nac date, clave_rfc varchar(12));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabble prosonas(id int key auto_increment, nombre varchar(50) not null, apellido' at line 1
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create table prosonas(id int key auto_increment, nombre varchar(50) not null, apellido_pat varchar(50) not null, apellido_mat varchar(50), fecha_nac date, clave_rfc varchar(12));
+Query OK, 0 rows affected (0.0742 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into personas(nombre, apellido_pat, apellido_mat, fecha_nac)
+                                       -> values("MIEGUL", "CACABALLERO", "PEÑAFIEL", "2004-12-25"),
+                                       -> ("ARMANDITO", "WENO", "NUEZ", "2004-05-31"),
+                                       -> ("LUICARLO", "SILLA", "LOPEZ", "2004-06-14"),
+                                       -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into personas(nombre, apellido_pat, apellido_mat, fecha_nac) values("MIEGUL", "CACABALLERO", "PEÑAFIEL", "2004-12-25"), ("ARMANDITO", "WENO", "NUEZ", "2004-05-31"), ("LUICARLO", "SILLA", "LOPEZ", "2004-06-14");
+ERROR: 1146 (42S02): Table 'tbd_e3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > alter table prosonas to personas;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to personas' at line 1
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > alter table prosonas rename to personas;
+Query OK, 0 rows affected (0.0292 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into personas(nombre, apellido_pat, apellido_mat, fecha_nac) values("MIEGUL", "CACABALLERO", "PEÑAFIEL", "2004-12-25"), ("ARMANDITO", "WENO", "NUEZ", "2004-05-31"), ("LUICARLO", "SILLA", "LOPEZ", "2004-06-14");
+Query OK, 3 rows affected (0.0118 sec)
+
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into personas(nombre, apellido_pat, fecha_nac)
+                                       -> values("PANCHO", "ESTRONCIO", "2003-08-30"),
+                                       -> ("MENY", "MUZGAN", "2003-09-27"),
+                                       -> ("BRANAN", "CAHVOS", "2004-10-28");
+Query OK, 3 rows affected (0.0043 sec)
+
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into personas(nombre, apellido_pat, apellido_mat, fecha_nac) values
+                                       -> ("DANONINO", "MALADONA", "SEPULTURA", "2004-03-30"),
+                                       -> ("ELMO", "MAZO", "ENCONSOLA", "2005-12-04"),
+                                       -> ("TIMMY", "TURNER", "LOPEZ", "2002-11-15"),
+                                       -> ("BOB", "ESPONJA", "PANTALONESCUADRADOS", "1998-06-06");
+Query OK, 4 rows affected (0.0051 sec)
+
+Records: 4  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from personas;
++----+-----------+--------------+---------------------+------------+-----------+
+| id | nombre    | apellido_pat | apellido_mat        | fecha_nac  | clave_rfc |
++----+-----------+--------------+---------------------+------------+-----------+
+|  1 | MIEGUL    | CACABALLERO  | PEÑAFIEL            | 2004-12-25 | NULL      |
+|  2 | ARMANDITO | WENO         | NUEZ                | 2004-05-31 | NULL      |
+|  3 | LUICARLO  | SILLA        | LOPEZ               | 2004-06-14 | NULL      |
+|  4 | PANCHO    | ESTRONCIO    | NULL                | 2003-08-30 | NULL      |
+|  5 | MENY      | MUZGAN       | NULL                | 2003-09-27 | NULL      |
+|  6 | BRANAN    | CAHVOS       | NULL                | 2004-10-28 | NULL      |
+|  7 | DANONINO  | MALADONA     | SEPULTURA           | 2004-03-30 | NULL      |
+|  8 | ELMO      | MAZO         | ENCONSOLA           | 2005-12-04 | NULL      |
+|  9 | TIMMY     | TURNER       | LOPEZ               | 2002-11-15 | NULL      |
+| 10 | BOB       | ESPONJA      | PANTALONESCUADRADOS | 1998-06-06 | NULL      |
++----+-----------+--------------+---------------------+------------+-----------+
+10 rows in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call clave_rfc();
+Query OK, 0 rows affected (0.0525 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from personas;
++----+-----------+--------------+---------------------+------------+------------+
+| id | nombre    | apellido_pat | apellido_mat        | fecha_nac  | clave_rfc  |
++----+-----------+--------------+---------------------+------------+------------+
+|  1 | MIEGUL    | CACABALLERO  | PEÑAFIEL            | 2004-12-25 | CAPM041225 |
+|  2 | ARMANDITO | WENO         | NUEZ                | 2004-05-31 | WENA040531 |
+|  3 | LUICARLO  | SILLA        | LOPEZ               | 2004-06-14 | SILL040614 |
+|  4 | PANCHO    | ESTRONCIO    | NULL                | 2003-08-30 | ESXP030830 |
+|  5 | MENY      | MUZGAN       | NULL                | 2003-09-27 | MUXM030927 |
+|  6 | BRANAN    | CAHVOS       | NULL                | 2004-10-28 | CAXB041028 |
+|  7 | DANONINO  | MALADONA     | SEPULTURA           | 2004-03-30 | MASD040330 |
+|  8 | ELMO      | MAZO         | ENCONSOLA           | 2005-12-04 | MAEE051204 |
+|  9 | TIMMY     | TURNER       | LOPEZ               | 2002-11-15 | TULT021115 |
+| 10 | BOB       | ESPONJA      | PANTALONESCUADRADOS | 1998-06-06 | ESPB980606 |
++----+-----------+--------------+---------------------+------------+------------+
+10 rows in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL >
